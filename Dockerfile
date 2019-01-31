@@ -97,6 +97,9 @@ RUN useradd -m -G plugdev user \
 	&& echo 'user ALL = NOPASSWD: ALL' > /etc/sudoers.d/user \
 	&& chmod 0440 /etc/sudoers.d/user
 
+RUN usermod -u 1001 user
+RUN groupmod -g 1001 user
+
 # Set the locale
 ENV ZEPHYR_TOOLCHAIN_VARIANT=zephyr
 ENV ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-sdk-${ZSDK_VERSION}
